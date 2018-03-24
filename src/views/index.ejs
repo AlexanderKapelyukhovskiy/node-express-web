@@ -40,9 +40,9 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <% for(var i=0; i<list.length; i++) {%>
+        <% for(var i=0; i<navs.length; i++) {%>
           <li>
-              <a href="#"><%=list[i]%></a>
+              <a href="<%=navs[i].Link%>"><%=navs[i].Text%></a>
           </li>
         <%}%>
       </ul>
