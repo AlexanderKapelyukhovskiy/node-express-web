@@ -14,8 +14,10 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 var bookRouter = require('./src/routes/bookRouter')(navs);
+var adminRouter = require('./src/routes/adminRouter')(navs);
 
 app.use('/Books', bookRouter);
+app.use('/Admin', adminRouter);
 
 app.get('/', function (req, res) {
     res.render('index', {navs: navs});
