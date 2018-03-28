@@ -4,6 +4,13 @@ var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 
 var router = function (navs) {
+    bookRouter.use(function (req, res, next) {
+        if (req.user) {
+            next();
+        } else {
+            res.redirect('/');
+        }
+    });
     bookRouter.route('/')
         .get(function (req, res) {
             var url = 'mongodb://alkapa:alkapamongodb@cluster0-shard-00-00-xxzqp.mongodb.net:27017,cluster0-shard-00-01-xxzqp.mongodb.net:27017,cluster0-shard-00-02-xxzqp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';

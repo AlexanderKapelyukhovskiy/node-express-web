@@ -41,6 +41,13 @@ function router(nav) {
         failureRedirect: '/'
       }));
   authRouter.route('/profile')
+    .all(function(req, res, next) {
+      if(req.user){
+        next();
+      } else {
+        res.redirect('/');
+      }
+    })
     .get(function(req, res) {
       res.send(req.user);
     });
